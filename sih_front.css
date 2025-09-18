@@ -1,0 +1,23 @@
+body{
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-image: url(b5.jpg);
+}
+
+@keyframes myAnimations{
+    from{color: aliceblue;}
+    to{color: black;}
+}
+
+#heading{
+    color:azure;
+    font-style: italic;
+    text-align: center;
+    padding: 130px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    animation-name: myAnimations;
+    animation-duration: 4s;
+    animation-iteration-count:infinite;
+    animation-direction: alternate;
+}
+
