@@ -1,0 +1,58 @@
+body{
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-image: url(b5.jpg);
+}
+
+
+@keyframes myAnimations{
+    from{color: aliceblue;}
+    to{color: black;}
+}
+
+
+#heading{
+    color:azure;
+    font-style: italic;
+    text-align: center;
+    padding: 130px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    animation-name: myAnimations;
+    animation-duration: 4s;
+    animation-iteration-count:infinite;
+    animation-direction: alternate;
+    font-size: 50px;
+}
+
+
+button {
+  background: transparent;
+  position: relative;
+  padding: 5px 15px;
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid rgb(40, 144, 241);
+  border-radius: 25px;
+  outline: none;
+  overflow: hidden;
+  color: rgb(40, 144, 241);
+  transition: color 0.3s 0.1s ease-out;
+  text-align: center;
+  margin-left: 450px;
+}
+
+
+button span{
+    background: transparent;
+    background-color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+button:hover{
+    color:blueviolet;
+}
