@@ -1,0 +1,104 @@
+@keyframes back{
+    0% {backgorung-color:rgb(48, 134, 184); top: 0px;}
+    25%{background-color: azure; top: 20px;}
+}
+
+body{
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-image: url(ba.jpg);
+    background-color: rgb(48, 134, 184);
+    animation-name: back;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-duration: 4s;
+    
+}
+
+@keyframes myAnimations{
+    from{color: aliceblue;}
+    to{color: transparent;}
+}
+
+#heading{
+    color:azure;
+    font-style: italic;
+    text-align: center;
+    padding: 130px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    animation-name: myAnimations;
+    animation-duration: 4s;
+    animation-iteration-count:infinite;
+    animation-direction: alternate;
+    font-size: 50px;
+}
+
+button {
+  background: transparent;
+  position: relative;
+  padding: 5px 15px;
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid rgb(242, 244, 246);
+  border-radius: 25px;
+  outline: none;
+  overflow: hidden;
+  color: white;
+  transition: color 0.3s 0.1s ease-out;
+  text-align: center;
+  margin-left: 450px;
+  background-color: transparent;
+}
+
+button span{
+    background: transparent;
+    background-color: transparent;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+button:hover{
+    color:rgb(87, 145, 251);
+}
+
+#video{
+    position: absolute;
+    background-size: 100%;
+    size: 100%;
+    padding-top: 200px;
+    width:1400px;
+    position: center;
+    position: center;
+    z-index: -3;
+}
+
+footer{
+    text-align: center;
+}
+
+#animations{
+    padding-top: 500px;
+    text-align: center;
+}
+
+@keyframes circles{
+    0%{top:0px; left: 0px;}
+    25%{top:0px; left:300px;}
+    50%{top:200px; left:300px;}
+    75%{top: 200px; left:0px;}
+    100%{top:300px; left:0px;}
+}
+
+.circle{
+    width: 30px;
+    height: 30px;
+    border: solid white;
+    border-radius: 5px;
+    animation-name: circles;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}

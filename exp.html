@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Experiment Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5faff;
+      display: flex;
+      justify-content: center;  /* horizontal centering */
+      align-items: center;      /* vertical centering */
+      min-height: 100vh;
+      flex-direction: column;
+      margin: 0;
+    }
+    h1 {
+      color: #003366;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    #loading {
+      font-size: 18px;
+      color: gray;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    table {
+      border-collapse: collapse;
+      width: 80%;
+      max-width: 700px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background: #007bff;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <h1>Experiment Page</h1>
+  <div id="loading">⏳ Loading data...</div>
+
+  <table id="data-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Data will appear here -->
+    </tbody>
+  </table>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "YOUR_FRIENDS_KEY",
+      authDomain: "YOUR_FRIENDS_PROJECT.firebaseapp.com",
+      projectId: "YOUR_FRIENDS_PROJECT",
+      storageBucket: "YOUR_FRIENDS_PROJECT.appspot.com",
+      messagingSenderId: "YOUR_FRIENDS_SENDER_ID",
+      appId: "YOUR_FRIENDS_APP_ID"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    async function loadData() {
+      const tbody = document.querySelector("#data-table tbody");
+      const loading = document.getElementById("loading");
+
+      try {
+        const querySnapshot = await getDocs(collection(db, "users")); // change if collection name differs
+        if (querySnapshot.empty) {
+          loading.textContent = "⚠️ No data found in collection.";
+          return;
+        }
+
+        querySnapshot.forEach((doc) => {
+          const data = doc.data();
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${doc.id}</td>
+            <td>${data.name || "-"}</td>
+            <td>${data.age || "-"}</td>
+          `;
+          tbody.appendChild(row);
+        });
+
+        loading.style.display = "none";
+      } catch (e) {
+        loading.textContent = "❌ Error loading data (check console)";
+        console.error("Firebase error:", e);
+      }
+    }
+
+    loadData();
+  </script>
+</body>
+</html>

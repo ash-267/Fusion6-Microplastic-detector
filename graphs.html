@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detection Graphs</title>
+  <link rel="stylesheet" href="graphs.css">
+  <script type="module" src="graphs.js"></script>
+  <script type="module" src="firebase.js"></script>
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>Microplastic Detection Graph</h1>
+    <p>Capacitance change vs Microplastic Concentration</p>
+  </header>
+
+  <!-- Graph Container -->
+  <div class="graph-container">
+    <canvas id="detectionGraph"></canvas>
+  </div>
+
+  <!-- Back button -->
+  <a class="back-btn" href="index.html">← Back to Home</a>
+
+  <script>
+    // Get reference to canvas
+    const ctx = document.getElementById('detectionGraph').getContext('2d');
+
+    // Example data (replace with Firebase later)
+    const concentrations = ["0 ppm", "10 ppm", "20 ppm", "30 ppm", "40 ppm", "50 ppm"];
+    const capacitances = [0, 2.1, 4.3, 6.8, 9.2, 11.5];
+    
+
+    // Initialize Chart.js
+    const detectionGraph = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: concentrations,
+        datasets: [{
+          label: "Capacitance Change (pF)",
+          data: capacitances,
+          borderColor: "#0077b6",
+          backgroundColor: "rgba(0, 119, 182, 0.2)",
+          fill: true,
+          tension: 0.3,
+          pointBackgroundColor: "#023e8a",
+          pointRadius: 5
+        }]
+      },
+      options: {
+        responsive: true,
+        animation: {
+          duration: 1500,
+          easing: 'easeOutQuart'
+        },
+        plugins: {
+          legend: {
+            display: true,
+            labels: { color: "#023e8a", font: { size: 14 } }
+          },
+          title: {
+            display: true,
+            text: "Microplastics Concentration vs Capacitance Change",
+            color: "#03045e",
+            font: { size: 18, weight: 'bold' }
+          }
+        },
+        scales: {
+          x: {
+            title: { display: true, text: "Microplastics Concentration (ppm)", color: "#03045e" },
+            ticks: { color: "#03045e" }
+          },
+          y: {
+            title: { display: true, text: "Capacitance Change (pF)", color: "#03045e" },
+            ticks: { color: "#03045e" }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

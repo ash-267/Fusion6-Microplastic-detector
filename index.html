@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Microplastics Detection</title>
+<link rel="stylesheet" href="sih_front.css">
+</head>
+<body>
+  <video id="video" autoplay muted loop>
+        <source src="microplastics_floating_in_water.mp4" type="video/mp4">
+    </video>
+  <!-- Brand Name -->
+  <header class="brand">
+    Fusion 6
+  </header>
+
+  <!-- Water Background -->
+  <div class="ocean">
+    <div class="wave"></div>
+    <div class="wave"></div>
+  </div>
+  
+
+  <!-- Main Section -->
+  <main class="container">
+    <!-- Card -->
+    <section class="card" aria-labelledby="heading">
+      
+      <h1 id="heading">Micro-Plastics — Let's Catch Them</h1>
+      <p class="tagline">Smart, affordable, and eco-friendly detection</p>
+
+      <!-- Chatbot Button -->
+  
+      <a class="btn chatbot-btn" href="bot.html">Open Chatbot</a>
+      
+      <br><br>
+
+      <!-- Info Button -->
+      
+      <a class="btn secondary" href="#info">Know About Microplastics</a>
+    </section>
+  
+    <!-- View Analysis Section -->
+    <section class="analysis-section">
+      <h2>View Analysis</h2>
+      <div class="analysis-options">
+        <a class="btn analysis-btn" href="exp.html">Water Sample Analysis</a>
+        <a class="btn analysis-btn" href="graphs.html">Detection Graphs</a>
+        <a class="btn analysis-btn" href="prevdata.html">Download Reports</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Info Section -->
+  <section id="info" class="info-section">
+    <div class="card">
+      <h2>What are Microplastics?</h2>
+      <p>
+        Microplastics are tiny plastic particles less than 5mm in size. They 
+        are found in water, soil, and even the air we breathe.
+        How They Enter Water Bodies:
+        1.Plastic Waste Breakdown: Sunlight, waves, and weather break bigger plastic into smaller fragments.
+        2.Industrial & Household Sources : Microbeads from cosmetics, fibers from synthetic clothes during washing, tire wear particles.
+        3.Improper Waste Disposal : Littering and poor waste management allow plastics to flow into rivers, lakes, and oceans.
+        4.Wastewater Discharge : Treatment plants often fail to filter all microplastics, so they reach water bodies.
+         </p>
+    </div>
+  </section>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAj63IYj8f1gvFc6WgJH_7AR_Inq6kgt_A",
+  authDomain: "microplastic-detection-1075.firebaseapp.com",
+  projectId: "microplastic-detection-1075",
+  storageBucket: "microplastic-detection-1075.firebasestorage.app",
+  messagingSenderId: "137238598324",
+  appId: "1:137238598324:web:9c515f20a6b4792656fde1",
+  measurementId: "G-5325CRKQ60"
+};
+
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // Read the data
+  async function readData() {
+    const querySnapshot = await getDocs(collection(db, "users")); // 👈 change "users" to your friend's collection name
+    querySnapshot.forEach((doc) => {
+      console.log(doc.id, " => ", doc.data());
+    });
+  }
+
+  readData();
+</script>
+
+</body>
+</html>
