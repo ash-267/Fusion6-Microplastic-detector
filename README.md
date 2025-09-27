@@ -32,7 +32,7 @@ Microplastics (dielectric constant ≈ 2.2) and water (dielectric constant ≈ 8
 
 ## 🖼️ System Design & Architecture  
 ### Internal Design  
-![Internal Design](images/internal_design.png)  
+![Internal Design](internal_design.png)  
 
 ### External Design  
 ![External Design](images/external_design.png)  
