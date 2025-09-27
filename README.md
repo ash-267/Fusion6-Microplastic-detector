@@ -32,7 +32,7 @@ Microplastics (dielectric constant ≈ 2.2) and water (dielectric constant ≈ 8
 
 ## 🖼️ System Design & Architecture  
 ### Internal Design  
-![Internal Design](images/[internal_design.png](https://github.com/ash-267/Fusion6-Microplastic-detector/blob/main/internal_design.png))  
+![Internal Design](images/internal_design.png)  
 
 ### External Design  
 ![External Design](images/external_design.png)  
